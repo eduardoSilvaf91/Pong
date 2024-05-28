@@ -64,6 +64,8 @@ janela = pygame.display.set_mode((800,600))
 pause = True
 cont = 0
 janela_aberta = True
+pode_colidir_barra_jogador = True
+pode_colidir_barra_cpu = True
 
 # -- inicio das interações --
 while janela_aberta :
@@ -93,16 +95,19 @@ while janela_aberta :
 
     #------------------------------------------------
     # -- logica colizao bolinha Jogador -- 
-    if posicao_x_bola < (POSICAO_X_JOGADOR + 20) and (posicao_y_bola + bola_tamanho) > posicao_y_jogador and posicao_y_bola < posicao_y_jogador + 80:
+    if posicao_x_bola < (POSICAO_X_JOGADOR + 20) and (posicao_y_bola + bola_tamanho) > posicao_y_jogador and posicao_y_bola < posicao_y_jogador + 80 and pode_colidir_barra_jogador:
         colizao_x_bola = True
+        pode_colidir_barra_jogador = False
+        pode_colidir_barra_cpu = True
        
 
     # -- logica colizao bolinha CPU -- 
-    if posicao_x_bola + bola_tamanho > POSICAO_X_CPU and (posicao_y_bola + bola_tamanho) > posicao_y_cpu and posicao_y_bola < (posicao_y_cpu + 80 ):
+    if posicao_x_bola + bola_tamanho > POSICAO_X_CPU and (posicao_y_bola + bola_tamanho) > posicao_y_cpu and posicao_y_bola < (posicao_y_cpu + 80 ) and pode_colidir_barra_cpu:
         colizao_x_bola = True
         num_randon_erro_cpu = (random.randrange(0, 6)) * 10
         print(num_randon_erro_cpu)
-
+        pode_colidir_barra_cpu = False
+        pode_colidir_barra_jogador = True
     
     # -- logica colizao lateral da bolinha -- 
     if posicao_y_bola > 600 or posicao_y_bola < 0:
@@ -129,6 +134,8 @@ while janela_aberta :
         colizao_x_bola = True
         colizao_y_bola = True
         pause = True
+        pode_colidir_barra_cpu = True
+        pode_colidir_barra_jogador = True
 
     if posicao_x_bola < 0:
         ponto_cpu += 1
@@ -140,6 +147,8 @@ while janela_aberta :
         colizao_x_bola = True
         colizao_y_bola = True
         pause = True
+        pode_colidir_barra_cpu = True
+        pode_colidir_barra_jogador = True
 
     #------------------------------------------------
     # -- movimento --
