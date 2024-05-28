@@ -41,10 +41,10 @@ colizao_x_bola = False
 colizao_y_bola = False
 
 # -- variaveis sprites do jogo --
-sprite_img_fundo = pygame.image.load('sprit\Campo.png')
-sprite_barra_jogador = pygame.image.load('sprit\Barra.png')
-sprite_barra_cpu = pygame.image.load('sprit\Barra.png')
-sprite_bola = pygame.image.load('sprit\Bola.png')
+sprite_img_fundo = pygame.image.load('sprit/Campo.png')
+sprite_barra_jogador = pygame.image.load('sprit/Barra.png')
+sprite_barra_cpu = pygame.image.load('sprit/Barra.png')
+sprite_bola = pygame.image.load('sprit/Bola.png')
 
 # -- variaveis texto pontos -- 
 ponto_jogador = 0
